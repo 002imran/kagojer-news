@@ -74,7 +74,7 @@ const displayNewsCard = allData =>{
                         </div>
                        
                         
-                           <div>
+                        <div>
 
                            <button onClick="newsDetails('${_id}')" href="#" class="btn btn-primary" 
                                 data-toggle="modal" data-target="#newsDetailModal">Show Details
@@ -98,40 +98,23 @@ loadAllNews()
 
 
 
-// const newsDetails = news_id => {
-//     const url = fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
-//      fetch(url)
-//     .then(res => res.json())
-//     .then(data => displayNewsDetails(data.data[1]))
-//     .catch()
-// }
-
-// const displayNewsDetails = allDetails =>{
-//     // console.log(allDetails);
-//     const newsTitle = document.getElementById('newsDetailModalLabel');
-//     newsTitle.innerText = allDetails._id;
-// }
-// // newsDetails()
-
-
-
-const newsDetails = category_id =>{
-    
-    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
-    
+const newsDetails = _id =>{
+    const url = fetch(`https://openapi.programming-hero.com/api/news/${_id}`);
     fetch(url)
     .then(res => res.json())
-    .then(data => displayNewsDetails(data.data))
-    // .then(data => console.log(data.data))
+    .then(newsData => displayNewsDetails(newsData.data))
 }
 
 const displayNewsDetails = allDetails =>{
-    console.log(allDetails);
-    // allDetails.forEach(newData=>{
-
-    //       const {author, title, image_url,total_view, details, others_info, rating, _id} = newData;
-    //       const newsTitle = document.getElementById('newsDetailModalLabel');
-    //       newsTitle.innerText = `<h3>${author}</h3>`;
-    // })
-         
+console.log(allDetails);
+    
 }
+
+
+displayNewsDetails()
+
+
+
+
+
+
