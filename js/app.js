@@ -18,7 +18,7 @@ const setAllNewsMenu = async () => {
          const li = document.createElement("li");
          li.innerHTML = `
          
-         <a class="container nav-item nav-link px-4 text-secondary" href="#">${news.category_name}</a>
+         <a class="container nav-item nav-link px-4 text-secondary" href="#" onclick="loadAllNews(${news.category_id})">${news.category_name}</a>
          `;
          
          newsItem.appendChild(li)
@@ -27,33 +27,31 @@ const setAllNewsMenu = async () => {
 
 }
 
-
-
 setAllNewsMenu()
 
 
 
-
-
-const loadAllNews = async () =>{
-    const response = await fetch("https://openapi.programming-hero.com/api/news/category/01")
-    const newsData = await response.json();
-    // displayNewsCard(newsData)
-    return newsData;
-    // console.log(newsData.data);
+const loadAllNews = category_id =>{
+    
+    const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`
+    
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayNewsCard(data.data))
 }
 
-const displayNewsCard = async() =>{
-    // console.log(newsData);
-    const allNewsData =await loadAllNews();
-    const newsAllData = allNewsData.data;
-    // console.log(newsAllData);
-    
-    
-    newsAllData.forEach(newsData =>{
-         console.log(newsData);
-         const {author, title, image_url,total_view, details, others_info, rating} = newsData;
+
+
+const displayNewsCard = allData =>{
          const newsContainer = document.getElementById('newsCard-container');
+         newsContainer.innerHTML = ``
+       
+        
+        allData.forEach(newsData =>{
+
+        //  console.log(newsData);
+         const {author, title, image_url,total_view, details, others_info, rating} = newsData;
+          
          const detailsNews = document.createElement('div');
          detailsNews.innerHTML = `
           <div class="card mt-5">
@@ -88,11 +86,6 @@ const displayNewsCard = async() =>{
         
 
         })
-}
-
-displayNewsCard()
-
+        
+} 
 loadAllNews()
-
-
-
