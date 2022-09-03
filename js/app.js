@@ -38,9 +38,47 @@ setAllNewsMenu()
 const loadAllNews = async () =>{
     const response = await fetch("https://openapi.programming-hero.com/api/news/category/01")
     const newsData = await response.json();
-    displayNewsCard(newsData)
-    // return newsData;
+    // displayNewsCard(newsData)
+    return newsData;
+    // console.log(newsData.data);
 }
+
+const displayNewsCard = async() =>{
+    // console.log(newsData);
+    const allNewsData =await loadAllNews();
+    const newsAllData = allNewsData.data;
+    // console.log(newsAllData);
+    
+    
+    newsAllData.forEach(newsData =>{
+         const newsContainer = document.getElementById('newsCard-container');
+         const detailsNews = document.createElement('div');
+         detailsNews.innerHTML = `
+          <div class="card mt-5">
+                <div class="d-flex">
+                    <img class="card-img-top w-40" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quaerat nihil sint asperiores possimus!
+                            Officia consequatur soluta dolor, expedita fugit magnam voluptate incidunt animi aliquid ipsum dolorem
+                            reprehenderit mollitia debitis quos facilis laborum quidem. Minus nihil, porro quas vero inventore
+                            molestias molestiae. Officiis odit modi, veniam blanditiis corrupti sed. Molestiae? content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        
+        `;
+        newsContainer.appendChild(detailsNews)
+        
+
+        })
+}
+
+displayNewsCard()
+
+loadAllNews()
 
 
 
