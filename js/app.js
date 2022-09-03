@@ -6,7 +6,7 @@ const loadAllNewsCatagories = async () =>{
 }
 
 const setAllNewsMenu = async () => {
-    
+      
     const allData = await loadAllNewsCatagories();
    
     const newsArray = allData.data.news_category;
@@ -14,6 +14,8 @@ const setAllNewsMenu = async () => {
     // console.log(newsArray);
     newsArray.forEach(news=>{
         //  console.log(news);
+         toggleSpinner(true)
+ 
          const newsItem = document.getElementById('all-news');
          const li = document.createElement("li");
          li.innerHTML = `
@@ -90,11 +92,24 @@ const displayNewsCard = allData =>{
         `;
         newsContainer.appendChild(detailsNews)
         
-
-        })
+        });
+        toggleSpinner(false);
+    
         
 } 
 loadAllNews()
+
+
+const toggleSpinner = isLoading =>{
+    const loaderContainer = document.getElementById('loader');
+    if(isLoading){
+        loaderContainer.classList.remove('d-none')
+    }
+    else{
+        loaderContainer.classList.add('d-none')
+    }
+}
+
 
 
 
