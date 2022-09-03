@@ -52,22 +52,34 @@ const displayNewsCard = async() =>{
     
     newsAllData.forEach(newsData =>{
          console.log(newsData);
-         const {author, title, image_url, others_info, rating} = newsData;
+         const {author, title, image_url,total_view, details, others_info, rating} = newsData;
          const newsContainer = document.getElementById('newsCard-container');
          const detailsNews = document.createElement('div');
          detailsNews.innerHTML = `
           <div class="card mt-5">
-                <div class="d-flex row">
-                    <img class="card-img-top col-4" src="${image_url}" alt="Card image cap">
-                    <div class="card-body ps-5 w-100 col-8">
+                <div class="d-flex">
+                    <img class="card-img-top w-25" src="${image_url}" alt="Card image cap">
+                    <div class="card-body h-100">
                         <h5 class="card-title">${title}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quaerat nihil sint asperiores possimus!
-                            Officia consequatur soluta dolor, expedita fugit magnam voluptate incidunt animi aliquid ipsum dolorem
-                            reprehenderit mollitia debitis quos facilis laborum quidem. Minus nihil, porro quas vero inventore
-                            molestias molestiae. Officiis odit modi, veniam blanditiis corrupti sed. Molestiae? content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+                        <p class="card-text"> ${details.length > 500 ? details.slice(0,500) + '...' : details }</p>
+                        
+                    <div class="card-detials d-flex text-align-center gap-5 mt-5">
+                        <div class="d-flex pe-5">
+                            <img class="author-image" src="${author.img}">
+                            <h5 class="ps-3">Jhane Copper</h5>
+                        </div>
+
+                        <div class="ps-5 pe-5">
+                            <h5><i class="fa-solid fa-eye px-2"></i>${total_view}</h5>
+                        </div>
+                       
+                        <div class="ms-5 ps-5">
+                             <a class=""> <i class="fa-solid fa-arrow-right fs-4 text-primary"></i> <a>
+                        </div>
+
+                    </div>   
+                </div>
+                    
                 </div>
             </div>
         
