@@ -51,14 +51,16 @@ const displayNewsCard = async() =>{
     
     
     newsAllData.forEach(newsData =>{
+         console.log(newsData);
+         const {author, title, image_url, others_info, rating} = newsData;
          const newsContainer = document.getElementById('newsCard-container');
          const detailsNews = document.createElement('div');
          detailsNews.innerHTML = `
           <div class="card mt-5">
-                <div class="d-flex">
-                    <img class="card-img-top w-40" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                <div class="d-flex row">
+                    <img class="card-img-top col-4" src="${image_url}" alt="Card image cap">
+                    <div class="card-body ps-5 w-100 col-8">
+                        <h5 class="card-title">${title}</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quaerat nihil sint asperiores possimus!
                             Officia consequatur soluta dolor, expedita fugit magnam voluptate incidunt animi aliquid ipsum dolorem
