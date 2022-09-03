@@ -18,7 +18,9 @@ const setAllNewsMenu = async () => {
          const li = document.createElement("li");
          li.innerHTML = `
          
-         <a class="container nav-item nav-link px-4 text-secondary" href="#" onclick="loadAllNews(${news.category_id})">${news.category_name}</a>
+         <a class="container nav-item nav-link px-4 text-secondary" href="#" onclick="loadAllNews('${news.category_id}')">
+                    ${news.category_name}
+         </a>
          `;
          
          newsItem.appendChild(li)
@@ -33,7 +35,7 @@ setAllNewsMenu()
 
 const loadAllNews = category_id =>{
     
-    const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
     
     fetch(url)
     .then(res => res.json())
@@ -50,7 +52,7 @@ const displayNewsCard = allData =>{
         allData.forEach(newsData =>{
 
         //  console.log(newsData);
-         const {author, title, image_url,total_view, details, others_info, rating} = newsData;
+         const {author, title, image_url,total_view, details, others_info, rating, _id} = newsData;
           
          const detailsNews = document.createElement('div');
          detailsNews.innerHTML = `
@@ -71,9 +73,13 @@ const displayNewsCard = allData =>{
                             <h5><i class="fa-solid fa-eye px-2"></i>${total_view}</h5>
                         </div>
                        
-                        <div class="ms-5 ps-5">
-                             <a class=""> <i class="fa-solid fa-arrow-right fs-4 text-primary"></i> <a>
-                        </div>
+                        
+                           <div>
+
+                           <button onClick="newsDetails('${_id}')" href="#" class="btn btn-primary" 
+                                data-toggle="modal" data-target="#newsDetailModal">Show Details
+                            </button> 
+                        </div>  
 
                     </div>   
                 </div>
@@ -89,3 +95,43 @@ const displayNewsCard = allData =>{
         
 } 
 loadAllNews()
+
+
+
+// const newsDetails = news_id => {
+//     const url = fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
+//      fetch(url)
+//     .then(res => res.json())
+//     .then(data => displayNewsDetails(data.data[1]))
+//     .catch()
+// }
+
+// const displayNewsDetails = allDetails =>{
+//     // console.log(allDetails);
+//     const newsTitle = document.getElementById('newsDetailModalLabel');
+//     newsTitle.innerText = allDetails._id;
+// }
+// // newsDetails()
+
+
+
+const newsDetails = category_id =>{
+    
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
+    
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayNewsDetails(data.data))
+    // .then(data => console.log(data.data))
+}
+
+const displayNewsDetails = allDetails =>{
+    console.log(allDetails);
+    // allDetails.forEach(newData=>{
+
+    //       const {author, title, image_url,total_view, details, others_info, rating, _id} = newData;
+    //       const newsTitle = document.getElementById('newsDetailModalLabel');
+    //       newsTitle.innerText = `<h3>${author}</h3>`;
+    // })
+         
+}

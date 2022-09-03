@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="#">News</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Blogs</a>
+                <a class="nav-link" href="./blog.html">Blogs</a>
             </li>
     
         </ul>
@@ -32,18 +32,11 @@
     
         <nav id="all-news" class="nav nav-pills nav-fill fs-5">
     
-            <!-- <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Breaking News</a>
-                <a class="nav-item nav-link" href="#">Regular News</a>
-                <a class="nav-item nav-link" href="#">International News</a>
-                <a class="nav-item nav-link" href="#">Sports</a>
-                <a class="nav-item nav-link" href="#">Entertainment</a>
-                <a class="nav-item nav-link" href="#">Culture</a>
-                <a class="nav-item nav-link" href="#">Arts</a>
-                <a class="nav-item nav-link" href="#">All News</a> -->
+       
         </nav>
     </section>
-    
+
+       
     
     <section class="mt-5">
         <div id="newsCard-container" class="mb-5 w-100 h-100">
@@ -68,14 +61,49 @@
         </div>
     
     </section>
+
     
+<section>
+
     
-   
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="newsDetailModal" tabindex="-1" role="dialog" aria-labelledby="newsDetailModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsDetailModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="news-details" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
- <script src="./js/app.js"></script>   
+<script src="./js/app.js"></script>   
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
 <footer class="bg-secondary h-50">
     <p class="py-5 text-center">Copy right 2002@</p>
