@@ -8,27 +8,27 @@ const loadAllNewsCatagories = async () =>{
 const setAllNewsMenu = async () => {
       
     const allData = await loadAllNewsCatagories();
-   
+    
     const newsArray = allData.data.news_category;
     
     // console.log(newsArray);
     newsArray.forEach(news=>{
         //  console.log(news);
-         toggleSpinner(true)
- 
-         const newsItem = document.getElementById('all-news');
-         const li = document.createElement("li");
-         li.innerHTML = `
-         
-         <a class="container nav-item nav-link px-4 text-secondary" href="#" onclick="loadAllNews('${news.category_id}')">
-                    ${news.category_name}
-         </a>
-         `;
-         
-         newsItem.appendChild(li)
-       
+        
+        toggleSpinner(true)
+        const newsItem = document.getElementById('all-news');
+        const li = document.createElement("li");
+        li.innerHTML = `
+        
+        <a class="container nav-item nav-link px-4 text-secondary" href="#" onclick="loadAllNews('${news.category_id}')">
+        ${news.category_name}
+        </a>
+        `;
+        
+        newsItem.appendChild(li)
+        
     })    
-
+    
 }
 
 setAllNewsMenu()
@@ -121,7 +121,13 @@ const newsDetails = _id =>{
 }
 
 const displayNewsDetails = allDetails =>{
-console.log(allDetails);
+    const modalTitle = document.getElementById('newsDetailModalLabel');
+    modalTitle.innerText = allDetails.details;
+    const newsDetails = document.getElementById('news-details');
+    newsDetails.innerHTML = `
+    <p>News Authro: ${allDetails.author.name}</p>
+    <p>published date: ${allDetails.author.published_date}<p>
+    `
     
 }
 
